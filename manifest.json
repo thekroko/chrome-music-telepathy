@@ -1,0 +1,27 @@
+{
+  "name": "Telepathic Music Link",
+  "version": "0.1",
+  "manifest_version": 2,
+  "permissions": [ "tabs", "storage" ],
+
+  "description": "Automatically plays Youtube songs send on GTalk",
+  "icons": { "16": "icon16.png", "48": "icon48.png", "128": "icon128.png" },
+  "homepage_url": "http://matthiaslinder.com/music+link",
+
+  "options_page": "options.html",
+  // "background": { "scripts": [ "background.js" ], "persistent": false },
+  "content_scripts": [ 
+      {
+	"matches": [
+//	  "http://mail.google.com/*",
+//	  "https://mail.google.com/*",
+	  "http://talkgadget.google.com/*",
+	  "https://talkgadget.google.com/*"
+	  ],
+	"js": [ "jquery.min.js", "inject.js" ],
+	"run_at": "document_idle",
+	"all_frames": true
+      }
+    ],
+  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
+}
